@@ -5,5 +5,9 @@ package almundo.com.callcenter.model;
  */
 public interface Empleable extends Runnable {
 
+    /**
+     *
+     * @param llamada
+     */
     void asignarLLamada(Call llamada);
 }

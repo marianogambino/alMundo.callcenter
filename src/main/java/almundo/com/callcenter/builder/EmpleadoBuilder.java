@@ -10,13 +10,17 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by mariano on 28/05/2017.
+ *
  */
 public class EmpleadoBuilder {
 
     private static Map<TipoEmpleadoEnum,List<Empleable>> factoryMap = new HashMap<TipoEmpleadoEnum, List<Empleable>>();
 
-
+    /**
+     *
+     * @param cantOp
+     * @param tipo
+     */
     public static void crearEmpleado(int cantOp, TipoEmpleadoEnum tipo){
         List<Empleable> list = new ArrayList<Empleable>();
         for(int i=0; i<cantOp; i++){
@@ -26,10 +30,19 @@ public class EmpleadoBuilder {
         factoryMap.put(tipo, list);
     }
 
+    /**
+     *
+     * @param tipo
+     * @return
+     */
     public static List<Empleable> getListaEmpleado(TipoEmpleadoEnum tipo){
         return factoryMap.get(tipo);
     }
 
+    /**
+     *
+     * @param tipo
+     */
     public static void removeItem( TipoEmpleadoEnum tipo){
         factoryMap.get(tipo).remove(0);
     }

@@ -8,14 +8,16 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * Created by mariano on 27/05/2017.
+ *
  */
 public class Dispatcher {
 
     private Logger logger = LoggerFactory.getLogger(Dispatcher.class);
     private static Dispatcher instance = new Dispatcher();
 
-
+    /**
+     *
+     */
     private Dispatcher(){
     }
 
@@ -23,6 +25,11 @@ public class Dispatcher {
         return instance;
     }
 
+    /**
+     *
+     * @param call
+     * @return
+     */
     public Boolean dispatcherCall(Call call){
         //Obtengo el empleado asignandole la llamada
         Empleable empleado = Context.getContext(EmpStrategy.getInstance()).executeStrategy(call);
@@ -35,6 +42,10 @@ public class Dispatcher {
         return false;
     }
 
+    /**
+     *
+     * @param empleable
+     */
     private void throwThread(Empleable empleable){
         Thread t = new Thread(empleable);
         t.start();

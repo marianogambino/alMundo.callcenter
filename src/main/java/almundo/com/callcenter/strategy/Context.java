@@ -4,7 +4,7 @@ import almundo.com.callcenter.model.Call;
 import almundo.com.callcenter.model.Empleable;
 
 /**
- * Created by mariano on 28/05/2017.
+ *
  */
 public class Context {
 
@@ -14,10 +14,19 @@ public class Context {
 
     private Strategy strategy;
 
+    /**
+     *
+     * @param strategy
+     */
     private Context(Strategy strategy){
         this.strategy = strategy;
     }
 
+    /**
+     *
+     * @param call
+     * @return
+     */
     public Empleable executeStrategy(Call call){
         return this.strategy.apply(call);
     }

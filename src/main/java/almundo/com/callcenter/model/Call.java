@@ -1,7 +1,7 @@
 package almundo.com.callcenter.model;
 
 /**
- * Created by mariano on 26/05/2017.
+ *
  */
 public class Call {
 
@@ -9,30 +9,61 @@ public class Call {
     private String nroTelefono;
 
     private Call(){}
+
+    /**
+     *
+     * @param nro
+     */
     private Call(String nro){
         this.nroTelefono = nro;
     }
 
+
+    /**
+     *
+     * @return
+     */
     public static Call newInstance(){
         return new Call();
     }
 
+    /**
+     *
+     * @param nro
+     * @return
+     */
     public static Call newInstance(String nro){
         return new Call(nro);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNroTelefono() {
         return nroTelefono;
     }
 
+    /**
+     *
+     * @param nroTelefono
+     */
     public void setNroTelefono(String nroTelefono) {
         this.nroTelefono = nroTelefono;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescipcion() {
         return descipcion;
     }
 
+    /**
+     *
+     * @param descipcion
+     */
     public void setDescipcion(String descipcion) {
         this.descipcion = descipcion;
     }

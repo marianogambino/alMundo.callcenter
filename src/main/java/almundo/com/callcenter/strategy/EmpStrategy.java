@@ -6,7 +6,7 @@ import almundo.com.callcenter.model.Call;
 import almundo.com.callcenter.model.Empleable;
 
 /**
- * Created by mariano on 28/05/2017.
+ *
  */
 public class EmpStrategy implements Strategy {
 
@@ -15,6 +15,9 @@ public class EmpStrategy implements Strategy {
         return instance;
     }
 
+    /**
+     *
+     */
     private EmpStrategy(){
         //Se llama a un builder para construir los operadores, supervisores y directores
         //cantidad de los mismos se toma de forma arbitraria
@@ -23,6 +26,11 @@ public class EmpStrategy implements Strategy {
         EmpleadoBuilder.crearEmpleado(2, TipoEmpleadoEnum.DIRECTOR);
     }
 
+    /**
+     *
+     * @param call
+     * @return
+     */
     public Empleable apply(Call call){
         Empleable emp = null;
         TipoEmpleadoEnum[] tipo = TipoEmpleadoEnum.values();
@@ -32,6 +40,12 @@ public class EmpStrategy implements Strategy {
         return emp;
     }
 
+    /**
+     *
+     * @param tipo
+     * @param callDispatcher
+     * @return
+     */
     private Empleable getEmpleable(TipoEmpleadoEnum tipo, Call callDispatcher){
         Empleable empleable = null;
         if (EmpleadoBuilder.getListaEmpleado(tipo).size() > 0) {

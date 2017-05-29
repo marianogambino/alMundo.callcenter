@@ -7,10 +7,16 @@ import almundo.com.callcenter.model.Operador;
 import almundo.com.callcenter.model.Supervisor;
 
 /**
- * Created by mariano on 27/05/2017.
+ *
  */
 public class EmpleadoFry {
 
+    /**
+     *
+     * @param tipo
+     * @param nombre
+     * @return
+     */
     public static Empleable createOperator(TipoEmpleadoEnum tipo, String nombre){
         Empleable e = null;
         switch (tipo){

@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mariano on 27/05/2017.
+ *
+ * @param <T>
  */
 public class Queue<T> {
 
@@ -15,6 +16,10 @@ public class Queue<T> {
         this.queue.add(t);
     }
 
+    /**
+     *
+     * @return
+     */
     public T get() {
         T element = null;
         if(this.queue.size()>0) {
@@ -24,14 +29,27 @@ public class Queue<T> {
         return element;
     }
 
+    /**
+     *
+     * @return
+     */
     public int size(){
         return queue.size();
     }
 
+    /**
+     *
+     * @param list
+     */
     public void addAll(List<T> list){
         queue.addAll(list);
     }
 
+    /**
+     *
+     * @param t
+     * @return
+     */
     public T checkAvailability(T t) {
         T aux = t;
         if(queue.size() > 0 ){
