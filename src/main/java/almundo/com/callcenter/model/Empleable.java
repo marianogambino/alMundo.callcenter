@@ -1,13 +1,13 @@
 package almundo.com.callcenter.model;
 
 /**
- * Created by mariano on 26/05/2017.
+ * Interface Empleable con tiene un objeto (Empleado).
  */
 public interface Empleable extends Runnable {
 
     /**
-     *
-     * @param llamada
+     * Setea una llamada telefonica.
+     * @param llamada telefonica.
      */
     void asignarLLamada(Call llamada);
 }

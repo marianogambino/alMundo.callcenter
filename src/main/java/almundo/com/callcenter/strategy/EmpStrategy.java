@@ -6,6 +6,9 @@ import almundo.com.callcenter.model.Call;
 import almundo.com.callcenter.model.Empleable;
 
 /**
+ * Clase que implementa una estrategia de asignacion
+ * de llamda a un empleado determinado (Op, Sup, Dir),
+ * dependiendo la disponibilidad.
  *
  */
 public class EmpStrategy implements Strategy {
@@ -16,6 +19,8 @@ public class EmpStrategy implements Strategy {
     }
 
     /**
+     * Constructor Privado.
+     * Genera la cantidad de Operadores, Supervisores y Directores.
      *
      */
     private EmpStrategy(){
@@ -27,30 +32,28 @@ public class EmpStrategy implements Strategy {
     }
 
     /**
-     *
-     * @param call
-     * @return
+     * Metodo encargado de obtener un Empleado disponible (Operador/Supervisor/Director).
+     * @return un empleado.
      */
-    public Empleable apply(Call call){
+    public Empleable get(){
         Empleable emp = null;
         TipoEmpleadoEnum[] tipo = TipoEmpleadoEnum.values();
         for( int i=0 ; i < tipo.length && emp == null; i++ ) {
-            emp = getEmpleable(tipo[i], call);
+            emp = getEmpleable(tipo[i]);
         }
         return emp;
     }
 
     /**
-     *
-     * @param tipo
-     * @param callDispatcher
-     * @return
+     * Metodo encargado de verificar la disponibilidad de un empleado, asignar la llamada
+     * y sacarlo de la lista de operadores disponibles.
+     * @param tipo de empleado.
+     * @return empleado.
      */
-    private Empleable getEmpleable(TipoEmpleadoEnum tipo, Call callDispatcher){
+    private Empleable getEmpleable(TipoEmpleadoEnum tipo){
         Empleable empleable = null;
         if (EmpleadoBuilder.getListaEmpleado(tipo).size() > 0) {
             empleable = EmpleadoBuilder.getListaEmpleado(tipo).get(0);
-            empleable.asignarLLamada(callDispatcher);
             EmpleadoBuilder.removeItem(tipo);
         }
         return empleable;

@@ -6,10 +6,15 @@ import almundo.com.callcenter.model.Operador;
 import almundo.com.callcenter.model.Supervisor;
 
 /**
- * Created by mariano on 28/05/2017.
+ * Clase de Utilidades.
  */
 public class Util {
 
+    /**
+     * Metodo utilizado para obtener un enum dependiendo de la instancia.
+     * @param emp interface que contiene una instancia (Operador/Supervisor/Director).
+     * @return un Enumerador
+     */
     public static TipoEmpleadoEnum getTipo(Empleable emp){
         if(emp instanceof Operador){
             return TipoEmpleadoEnum.OPERADOR;

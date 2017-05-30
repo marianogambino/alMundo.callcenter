@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 /**
- * Created by mariano on 27/05/2017.
+ * Test BORRADOR utlizado para desarrollar y luego realizar refactor.
  */
 public class TestCallCenterDraft {
 
@@ -42,7 +42,6 @@ public class TestCallCenterDraft {
         Empleable empleable;
         //llamadas entrantes
 
-        //FALTA ################### cuando un operador termina tiene que volver a la cola para atender la proxima llamada
         for(Call call: calls){
 
             //El Dispacther siempre obtiene la misma instancia de si misma

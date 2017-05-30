@@ -24,7 +24,7 @@ public class EmpleadoBuilder {
     public static void crearEmpleado(int cantOp, TipoEmpleadoEnum tipo){
         List<Empleable> list = new ArrayList<Empleable>();
         for(int i=0; i<cantOp; i++){
-            Empleable op = EmpleadoFry.createOperator(tipo,  " - " + (i+1));
+            Empleable op = EmpleadoFry.crearEmpleado(tipo,  " - " + (i+1));
             list.add(op);
         }
         factoryMap.put(tipo, list);

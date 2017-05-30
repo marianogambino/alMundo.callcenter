@@ -24,12 +24,17 @@ public class CallCenter {
     /**
      * Metodo que se encarga de llamar al Dispatcher para asignar una llamada a un operador/supervisor/director
      *
-     *  Explicacion de porque el while true/ false para un fin del loop,
+     *  Explicacion de porque el while true/ false.
      *  La finalidad es mostrar como las llamadas entran a una cola, se van asignando a cada operador/sup/director
      *  y si hay llamadas pendientes se toma la que esta en la cola, ademas si no hay operadores
      *  disponibles esas llamadas quedan en la misma, por ende con este loop podemos ver que cuando se
-     *  se desocupa un operador, vuelve a estar disponible y se le asignado una llamada a traves del
+     *  se desocupa un operador, vuelve a estar disponible y se le asigna una llamada a traves del
      *  dispatcher.
+     *
+     *  Ademas el Dispatcher puede atender 10 llamadas al mismo tiempo ya que lanza hilos que son representados
+     *  por cada tipo de empleado, teniendo cada uno de ellos una llamada asignada.
+     *
+     *  En el caso de que el dispatcher no pueda asignar una llamada la misma queda en la cola de espera.
      */
     public void assignCalls(){
 
@@ -37,13 +42,14 @@ public class CallCenter {
 
         while (bool){
             Call call = QueueCall.getQueue().get();
-            //Si existe una llamada y el dispatcher no pudo asignar la misma a un operador/sup/dir.
-            if(call != null && !Dispatcher.getInstance().dispatcherCall(call) ){
-                QueueCall.getQueue().push(call);
+            // Si existe una llamada y el dispatcher no pudo asignar
+            // la misma a un operador/sup/dir.(no hay disponiblidad de empleados)
+            // la llamada queda en la cola de espera. Si el dispatcher pudo asignar la llamada
+            // la borra la misma de la cola.
+            if(call != null){
+                Dispatcher.getInstance().dispatcherCall(call);
             }
-
             bool = showQueue(bool);
-
         }
 
     }
@@ -53,7 +59,8 @@ public class CallCenter {
      * al terminar los threads, como se encuentra la queue de llamadas y como los operadores
      * vuelven a estar disponibles para que el dispatcher le vuelva asignar una llamada.
      *
-     * Por otra parte se genera un punto de fin para que el loop no quede infinito.
+     * Por otra parte se genera un punto de fin para que el loop no quede infinito o
+     * viendo si hay alguna llamada en la Queue de llamadas.
      *
      * La finalidad es mostrar lo que se detalla en el metodo assignCalls
      */

@@ -7,17 +7,17 @@ import almundo.com.callcenter.model.Operador;
 import almundo.com.callcenter.model.Supervisor;
 
 /**
- *
+ * Clase Factoria.
  */
 public class EmpleadoFry {
 
     /**
-     *
-     * @param tipo
-     * @param nombre
-     * @return
+     * Obtiene un tipo de empleado dependiendo del tipo.
+     * @param tipo de empleado (Operador, Supervisor, Director).
+     * @param nombre del empleado.
+     * @return un empleado.
      */
-    public static Empleable createOperator(TipoEmpleadoEnum tipo, String nombre){
+    public static Empleable crearEmpleado(TipoEmpleadoEnum tipo, String nombre){
         Empleable e = null;
         switch (tipo){
             case OPERADOR:

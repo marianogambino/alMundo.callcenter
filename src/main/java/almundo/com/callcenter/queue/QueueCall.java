@@ -3,7 +3,7 @@ package almundo.com.callcenter.queue;
 import almundo.com.callcenter.model.Call;
 
 /**
- * Clase que contiene una cola de llamadas;
+ * Clase que contiene una cola de llamadas.
  *
  */
 public class QueueCall {

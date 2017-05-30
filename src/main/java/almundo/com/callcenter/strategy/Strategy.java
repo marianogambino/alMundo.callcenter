@@ -4,14 +4,14 @@ import almundo.com.callcenter.model.Call;
 import almundo.com.callcenter.model.Empleable;
 
 /**
- *
+ * Interface utilizada para contener una estrategia
  */
 public interface Strategy {
 
     /**
+     * Metodo de interface especifico para implementar una estrategia determinada.
      *
-     * @param call
-     * @return
+     * @return una instancia de Empleado (Op/Sup/Dir) contenida en la interface Empleable.
      */
-    Empleable apply(Call call);
+    Empleable get();
 }

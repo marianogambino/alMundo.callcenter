@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * JUnit Test
  */
-public class UnitTestCallCenter {
+public class UnitTestStrategy {
 
     @Before
     public void setUp(){

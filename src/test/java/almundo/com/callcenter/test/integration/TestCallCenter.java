@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Test de Integracion
+ *
+ * Prueba de integracion del
  *
  */
 public class TestCallCenter {
@@ -28,8 +31,19 @@ public class TestCallCenter {
      *
      */
     @Test
-    public void testDispatcherCall(){
+    public void testCallCenter(){
         CallCenter callcenter = CallCenter.newInstance();
+        QueueCall.getQueue().addAll(calls);
+        callcenter.assignCalls();
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testConMasDiezLlamadas(){
+        CallCenter callcenter = CallCenter.newInstance();
+        //Se agregan diez llamadas a una queue.
         QueueCall.getQueue().addAll(calls);
         //Se agregan dos llamadas nuevas
         QueueCall.getQueue().push(Call.newInstance( "New Call 11"));
