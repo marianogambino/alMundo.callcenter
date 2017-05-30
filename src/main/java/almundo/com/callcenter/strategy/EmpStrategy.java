@@ -54,7 +54,7 @@ public class EmpStrategy implements Strategy {
         Empleable empleable = null;
         if (EmpleadoBuilder.getListaEmpleado(tipo).size() > 0) {
             empleable = EmpleadoBuilder.getListaEmpleado(tipo).get(0);
-            EmpleadoBuilder.removeItem(tipo);
+            EmpleadoBuilder.removeItem(tipo,empleable);
         }
         return empleable;
     }

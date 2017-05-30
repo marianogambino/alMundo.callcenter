@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Clase Buider encargada de crear los empleados.
  *
  */
 public class EmpleadoBuilder {
@@ -17,9 +18,12 @@ public class EmpleadoBuilder {
     private static Map<TipoEmpleadoEnum,List<Empleable>> factoryMap = new HashMap<TipoEmpleadoEnum, List<Empleable>>();
 
     /**
+     * Crea una cantidad determinada de empleados segun el tipo de empleado.
      *
-     * @param cantOp
-     * @param tipo
+     * Crea una lista de empleados y por cada lista se agrega a un mapa segun el tipo de empleado.
+     * El mapa es utlizado como factory.
+     * @param cantOp cantidad de empleados ha crear
+     * @param tipo de empleado
      */
     public static void crearEmpleado(int cantOp, TipoEmpleadoEnum tipo){
         List<Empleable> list = new ArrayList<Empleable>();
@@ -31,7 +35,7 @@ public class EmpleadoBuilder {
     }
 
     /**
-     *
+     * Obtiene una lista de empleados segun el tipo.
      * @param tipo
      * @return
      */
@@ -40,10 +44,10 @@ public class EmpleadoBuilder {
     }
 
     /**
-     *
+     * Elimina un empleado de la lista segun el tipo.
      * @param tipo
      */
-    public static void removeItem( TipoEmpleadoEnum tipo){
-        factoryMap.get(tipo).remove(0);
+    public static void removeItem( TipoEmpleadoEnum tipo, Empleable empleado){
+        factoryMap.get(tipo).remove(empleado);
     }
 }
