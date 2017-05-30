@@ -34,7 +34,7 @@ public class Dispatcher {
      * Se encarga de asignar una llamada a un empleado siendo este un hilo/thread.
      * @param call representa una llamada.
      */
-    public void dispatcherCall(Call call){
+    public void dispatchCall(Call call){
         //Obtengo el empleado asignandole la llamada, utilizando una estrategia de asignacion.
         Empleable empleado = Context.getContext(EmpStrategy.getInstance()).executeStrategy();
         //Si existe empleado que atienda la llamada.
