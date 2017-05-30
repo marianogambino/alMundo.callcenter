@@ -36,7 +36,7 @@ public class EmpleadoBuilder {
 
     /**
      * Obtiene una lista de empleados segun el tipo.
-     * @param tipo
+     * @param tipo Enumerador que representa al tipo de empleado (Operador, Supervisor, Director)
      * @return
      */
     public static List<Empleable> getListaEmpleado(TipoEmpleadoEnum tipo){
@@ -46,7 +46,7 @@ public class EmpleadoBuilder {
     /**
      * Elimina un empleado de la lista segun el tipo.
      * @param tipo Enumerador que representa al tipo de empleado (Operador, Supervisor, Director)
-     * @param empleado
+     * @param empleado (Operador, Supervisor, Director)
      */
     public static void removeItem( TipoEmpleadoEnum tipo, Empleable empleado){
         factoryMap.get(tipo).remove(empleado);
