@@ -50,8 +50,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../almundo/com/callcenter/strategy/Context.html" title="class in almundo.com.callcenter.strategy"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.strategy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../almundo/com/callcenter/strategy/Context.html" title="class in almundo.com.callcenter.search"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.search"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?almundo/com/callcenter/strategy/EmpStrategy.html" target="_top">Frames</a></li>
@@ -93,7 +93,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">almundo.com.callcenter.strategy</div>
+<div class="subTitle">almundo.com.callcenter.search</div>
 <h2 title="Class EmpStrategy" class="title">Class EmpStrategy</h2>
 </div>
 <div class="contentContainer">
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
-<li>almundo.com.callcenter.strategy.EmpStrategy</li>
+<li>almundo.com.callcenter.search.SearchAvailabilityEmp</li>
 </ul>
 </li>
 </ul>
@@ -110,13 +110,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.strategy">Strategy</a></dd>
+<dd><a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.search">Strategy</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">EmpStrategy</span>
 extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.strategy">Strategy</a></pre>
+implements <a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.search">Strategy</a></pre>
 <div class="block">Clase que implementa una estrategia de asignacion
  de llamda a un empleado determinado (Op, Sup, Dir),
  dependiendo la disponibilidad.</div>
@@ -139,7 +139,7 @@ implements <a href="../../../../almundo/com/callcenter/strategy/Strategy.html" t
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html" title="class in almundo.com.callcenter.strategy">EmpStrategy</a></code></td>
+<td class="colFirst"><code>static <a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html" title="class in almundo.com.callcenter.search">EmpStrategy</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html#instance">instance</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -164,7 +164,7 @@ implements <a href="../../../../almundo/com/callcenter/strategy/Strategy.html" t
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static <a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html" title="class in almundo.com.callcenter.strategy">EmpStrategy</a></code></td>
+<td class="colFirst"><code>static <a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html" title="class in almundo.com.callcenter.search">EmpStrategy</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html#getInstance--">getInstance</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
@@ -195,7 +195,7 @@ implements <a href="../../../../almundo/com/callcenter/strategy/Strategy.html" t
 <ul class="blockListLast">
 <li class="blockList">
 <h4>instance</h4>
-<pre>public static&nbsp;<a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html" title="class in almundo.com.callcenter.strategy">EmpStrategy</a> instance</pre>
+<pre>public static&nbsp;<a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html" title="class in almundo.com.callcenter.search">EmpStrategy</a> instance</pre>
 </li>
 </ul>
 </li>
@@ -212,7 +212,7 @@ implements <a href="../../../../almundo/com/callcenter/strategy/Strategy.html" t
 <ul class="blockList">
 <li class="blockList">
 <h4>getInstance</h4>
-<pre>public static&nbsp;<a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html" title="class in almundo.com.callcenter.strategy">EmpStrategy</a>&nbsp;getInstance()</pre>
+<pre>public static&nbsp;<a href="../../../../almundo/com/callcenter/strategy/EmpStrategy.html" title="class in almundo.com.callcenter.search">EmpStrategy</a>&nbsp;getInstance()</pre>
 </li>
 </ul>
 <a name="get--">
@@ -225,7 +225,7 @@ implements <a href="../../../../almundo/com/callcenter/strategy/Strategy.html" t
 <div class="block">Metodo encargado de obtener un Empleado disponible (Operador/Supervisor/Director).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../almundo/com/callcenter/strategy/Strategy.html#get--">get</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.strategy">Strategy</a></code></dd>
+<dd><code><a href="../../../../almundo/com/callcenter/strategy/Strategy.html#get--">get</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.search">Strategy</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>un empleado.</dd>
 </dl>
@@ -259,8 +259,8 @@ implements <a href="../../../../almundo/com/callcenter/strategy/Strategy.html" t
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../almundo/com/callcenter/strategy/Context.html" title="class in almundo.com.callcenter.strategy"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.strategy"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../almundo/com/callcenter/strategy/Context.html" title="class in almundo.com.callcenter.search"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../almundo/com/callcenter/strategy/Strategy.html" title="interface in almundo.com.callcenter.search"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?almundo/com/callcenter/strategy/EmpStrategy.html" target="_top">Frames</a></li>
