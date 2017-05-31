@@ -2,7 +2,6 @@ package almundo.com.callcenter.strategy;
 
 import almundo.com.callcenter.builder.EmpleadoBuilder;
 import almundo.com.callcenter.enums.TipoEmpleadoEnum;
-import almundo.com.callcenter.model.Call;
 import almundo.com.callcenter.model.Empleable;
 
 /**
@@ -25,10 +24,10 @@ public class EmpStrategy implements Strategy {
      */
     private EmpStrategy(){
         //Se llama a un builder para construir los operadores, supervisores y directores
-        //cantidad de los mismos se toma de forma arbitraria
-        EmpleadoBuilder.crearEmpleado(5, TipoEmpleadoEnum.OPERADOR);
-        EmpleadoBuilder.crearEmpleado(3, TipoEmpleadoEnum.SUPERVISOR );
-        EmpleadoBuilder.crearEmpleado(2, TipoEmpleadoEnum.DIRECTOR);
+        //la cantidad de los mismos se toma de forma arbitraria
+        EmpleadoBuilder.crearEmpleado(10, TipoEmpleadoEnum.OPERADOR);
+        EmpleadoBuilder.crearEmpleado(2, TipoEmpleadoEnum.SUPERVISOR );
+        EmpleadoBuilder.crearEmpleado(1, TipoEmpleadoEnum.DIRECTOR);
     }
 
     /**

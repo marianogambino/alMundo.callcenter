@@ -56,21 +56,21 @@ public class TestCallCenterDraft {
 
             if (EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.OPERADOR).size() > 0) {
                 empleable = EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.OPERADOR).get(0);
-                empleable.asignarLLamada(callDispatcher);
+                empleable.setearLlamada(callDispatcher);
                 Thread t = new Thread(empleable);
                 t.start();
                 EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.OPERADOR).remove(0);
 
             } else if (EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.SUPERVISOR).size() > 0) {
                 empleable = EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.SUPERVISOR).get(0);
-                empleable.asignarLLamada(callDispatcher);
+                empleable.setearLlamada(callDispatcher);
                 Thread t = new Thread(empleable);
                 t.start();
                 EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.SUPERVISOR).remove(0);
 
             } else if (EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.DIRECTOR).size() > 0) {
                 empleable = EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.DIRECTOR).get(0);
-                empleable.asignarLLamada(callDispatcher);
+                empleable.setearLlamada(callDispatcher);
                 Thread t = new Thread(empleable);
                 t.start();
                 EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.DIRECTOR).remove(0);

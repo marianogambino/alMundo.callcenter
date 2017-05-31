@@ -4,6 +4,7 @@ import almundo.com.callcenter.model.*;
 import almundo.com.callcenter.queue.QueueCall;
 import almundo.com.callcenter.strategy.Context;
 import almundo.com.callcenter.strategy.EmpStrategy;
+import almundo.com.callcenter.util.CallCounter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +14,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Dispatcher {
 
+    private static final Integer MAX_CALL = 10;
     private Logger logger = LoggerFactory.getLogger(Dispatcher.class);
     private static Dispatcher instance = new Dispatcher();
 
@@ -35,14 +37,19 @@ public class Dispatcher {
      * @param call representa una llamada.
      */
     public void dispatchCall(Call call){
-        //Obtengo el empleado asignandole la llamada, utilizando una estrategia de asignacion.
-        Empleable empleado = Context.getContext(EmpStrategy.getInstance()).executeStrategy();
-        //Si existe empleado que atienda la llamada.
-        if(empleado != null){
-            //lanzo el hilo para tomar las llamadas de forma concurrente
-            empleado.asignarLLamada(call);
-            QueueCall.getQueue().remove(call);
-            throwThread(empleado);
+
+        //Se verifica la cantidad maxima de llamadas.
+        if(CallCounter.count() < MAX_CALL) {
+            //Obtengo el empleado asignandole la llamada, utilizando una estrategia de asignacion.
+            Empleable empleado = Context.getContext(EmpStrategy.getInstance()).executeStrategy();
+            //Si existe empleado que atienda la llamada.
+            if (empleado != null) {
+                //lanzo el hilo para tomar las llamadas de forma concurrente
+                empleado.setearLlamada(call);
+                CallCounter.add();
+                QueueCall.getQueue().remove(call);
+                throwThread(empleado);
+            }
         }
     }
 

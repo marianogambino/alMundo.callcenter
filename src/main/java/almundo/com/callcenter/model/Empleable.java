@@ -9,5 +9,6 @@ public interface Empleable extends Runnable {
      * Setea una llamada telefonica.
      * @param llamada telefonica.
      */
-    void asignarLLamada(Call llamada);
+    void setearLlamada(Call llamada);
 }
+

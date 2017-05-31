@@ -1,6 +1,7 @@
 package almundo.com.callcenter.model;
 
 import almundo.com.callcenter.builder.EmpleadoBuilder;
+import almundo.com.callcenter.util.CallCounter;
 import almundo.com.callcenter.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,6 +48,7 @@ public class Empleado implements Empleable {
             //El empleado vuelve a la lista correspondiente para tener disponibilidad y
             // atender otra llamada.
             EmpleadoBuilder.getListaEmpleado(Util.getTipo(this)).add(this);
+            CallCounter.sustract();
         }
         catch(InterruptedException iex){
             logger.info("La Llamada atendida por {}  fue interrumpida", this.nombre);
@@ -73,7 +75,7 @@ public class Empleado implements Empleable {
      * Seteo una llamada telefonica.
      * @param llamada telefonica.
      */
-    public void asignarLLamada(Call llamada) {
+    public void setearLlamada(Call llamada) {
          this.call = llamada;
     }
 }

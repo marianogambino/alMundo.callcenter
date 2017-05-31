@@ -5,6 +5,7 @@ import almundo.com.callcenter.dispatcher.Dispatcher;
 import almundo.com.callcenter.enums.TipoEmpleadoEnum;
 import almundo.com.callcenter.model.Call;
 import almundo.com.callcenter.queue.QueueCall;
+import almundo.com.callcenter.util.CallCounter;
 
 /**
  * Clase que representa al CallCenter
@@ -44,10 +45,10 @@ public class CallCenter {
             Call call = QueueCall.getQueue().get();
             // Si existe una llamada y el dispatcher no pudo asignar
             // la misma a un operador/sup/dir.(no hay disponiblidad de empleados)
-            // la llamada queda en la cola de espera. Si el dispatcher pudo asignar la llamada
-            // la borra la misma de la cola.
+            // la llamada queda en la cola de espera.
+            // Si el dispatcher pudo asignar la llamada, la borra de la cola.
             if(call != null){
-                Dispatcher.getInstance().dispatcherCall(call);
+                Dispatcher.getInstance().dispatchCall(call);
             }
             bool = showQueue(bool);
         }
@@ -56,8 +57,9 @@ public class CallCenter {
 
     /**
      * Este Bloque de Codigo se agrega con el fin de mostrar como se asignan las llamadas
-     * al terminar los threads, como se encuentra la queue de llamadas y como los operadores
-     * vuelven a estar disponibles para que el dispatcher le vuelva asignar una llamada.
+     * al terminar los threads, como se encuentra la queue de llamadas, como los operadores
+     * vuelven a estar disponibles para que el dispatcher le vuelva asignar una llamada y
+     * como el dispatche atiende como maximo 10 llamadas.
      *
      * Por otra parte se genera un punto de fin para que el loop no quede infinito o
      * viendo si hay alguna llamada en la Queue de llamadas.
@@ -68,11 +70,14 @@ public class CallCenter {
 
         try {
             if( EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.OPERADOR).size()== 0) {
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 System.out.println("LLamadas en la Queue: " + QueueCall.getQueue().size());
                 System.out.println("Cantidad de Operadores:  " + EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.OPERADOR).size());
+                System.out.println("Cantidad de Llamadas:  " + CallCounter.count());
             }
-            if(QueueCall.getQueue().size() == 0){
+
+            if(QueueCall.getQueue().size() == 0 ){
+                System.out.println("Cantidad de Llamadas:  " + CallCounter.count());
                 return false;
             }
 

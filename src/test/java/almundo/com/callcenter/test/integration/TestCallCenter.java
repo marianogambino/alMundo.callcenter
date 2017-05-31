@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Test de Integracion
  *
- * Prueba de integracion del
+ * Prueba de integracion del CallCenter
  *
  */
 public class TestCallCenter {
@@ -41,13 +41,14 @@ public class TestCallCenter {
      *
      */
     @Test
-    public void testConMasDiezLlamadas(){
+    public void testConMasDiezDeLlamadas(){
         CallCenter callcenter = CallCenter.newInstance();
         //Se agregan diez llamadas a una queue.
         QueueCall.getQueue().addAll(calls);
         //Se agregan dos llamadas nuevas
         QueueCall.getQueue().push(Call.newInstance( "New Call 11"));
         QueueCall.getQueue().push(Call.newInstance( "New Call 12"));
+        QueueCall.getQueue().push(Call.newInstance( "New Call 13"));
         callcenter.assignCalls();
     }
 
