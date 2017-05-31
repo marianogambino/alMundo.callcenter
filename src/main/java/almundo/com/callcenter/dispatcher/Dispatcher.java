@@ -2,8 +2,7 @@ package almundo.com.callcenter.dispatcher;
 
 import almundo.com.callcenter.model.*;
 import almundo.com.callcenter.queue.QueueCall;
-import almundo.com.callcenter.strategy.Context;
-import almundo.com.callcenter.strategy.EmpStrategy;
+import almundo.com.callcenter.search.SearchAvailabilityEmp;
 import almundo.com.callcenter.util.CallCounter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,11 +16,13 @@ public class Dispatcher {
     private static final Integer MAX_CALL = 10;
     private Logger logger = LoggerFactory.getLogger(Dispatcher.class);
     private static Dispatcher instance = new Dispatcher();
+    private SearchAvailabilityEmp searhEmp;
 
     /**
      * Contructor. Instancia el Dispatcher.
      */
     private Dispatcher(){
+        this.searhEmp = SearchAvailabilityEmp.getInstance();
     }
 
     /**
@@ -41,7 +42,7 @@ public class Dispatcher {
         //Se verifica la cantidad maxima de llamadas.
         if(CallCounter.count() < MAX_CALL) {
             //Obtengo el empleado asignandole la llamada, utilizando una estrategia de asignacion.
-            Empleable empleado = Context.getContext(EmpStrategy.getInstance()).executeStrategy();
+            Empleable empleado = searhEmp.get();
             //Si existe empleado que atienda la llamada.
             if (empleado != null) {
                 //lanzo el hilo para tomar las llamadas de forma concurrente
@@ -57,12 +58,16 @@ public class Dispatcher {
      * Lanza un hilo/thread.
      * @param empleable
      */
-    private void throwThread(Empleable empleable){
-        Thread t = new Thread(empleable);
-        t.start();
+    public void throwThread(Empleable empleable){
+        Thread thread = new Thread(empleable);
+        thread.start();
     }
 
-
-
-
+    /**
+     *
+     * @param searhEmp
+     */
+    public void setSearhEmp(SearchAvailabilityEmp searhEmp) {
+        this.searhEmp = searhEmp;
+    }
 }

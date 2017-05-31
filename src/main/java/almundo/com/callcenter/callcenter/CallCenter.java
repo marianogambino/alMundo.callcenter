@@ -17,10 +17,21 @@ public class CallCenter {
         return new CallCenter();
     }
 
+    private static int OPERADORES = 8;
+    private static int SUPERVISORES = 2;
+    private static int DIRECTORES = 1;
+
     /**
      * Contructor privado.
+     * Genera los empleados a traves de un Builder
      */
-    private CallCenter(){}
+    private CallCenter(){
+        //Se llama a un builder para construir los operadores, supervisores y directores
+        //la cantidad de los mismos se toma de forma arbitraria
+        EmpleadoBuilder.crearEmpleado(OPERADORES, TipoEmpleadoEnum.OPERADOR);
+        EmpleadoBuilder.crearEmpleado(SUPERVISORES, TipoEmpleadoEnum.SUPERVISOR );
+        EmpleadoBuilder.crearEmpleado(DIRECTORES, TipoEmpleadoEnum.DIRECTOR);
+    }
 
     /**
      * Metodo que se encarga de llamar al Dispatcher para asignar una llamada a un operador/supervisor/director
@@ -69,14 +80,16 @@ public class CallCenter {
     private Boolean showQueue(Boolean bool){
 
         try {
-            if( EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.OPERADOR).size()== 0) {
+            if( EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.OPERADOR).size()== 0
+                    || EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.DIRECTOR).size()== 0
+                || EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.SUPERVISOR).size()== 0) {
                 Thread.sleep(500);
                 System.out.println("LLamadas en la Queue: " + QueueCall.getQueue().size());
                 System.out.println("Cantidad de Operadores:  " + EmpleadoBuilder.getListaEmpleado(TipoEmpleadoEnum.OPERADOR).size());
                 System.out.println("Cantidad de Llamadas:  " + CallCounter.count());
             }
 
-            if(QueueCall.getQueue().size() == 0 ){
+            if( CallCounter.count() == 0 ){
                 System.out.println("Cantidad de Llamadas:  " + CallCounter.count());
                 return false;
             }

@@ -17,7 +17,7 @@ public class CallCounter {
     /**
      * Resta uno al contador.
      */
-    public static void sustract(){
+    public synchronized static void sustract(){
         countCall--;
     }
 

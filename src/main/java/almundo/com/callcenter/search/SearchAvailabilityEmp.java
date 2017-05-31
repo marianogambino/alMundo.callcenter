@@ -1,33 +1,26 @@
-package almundo.com.callcenter.strategy;
+package almundo.com.callcenter.search;
 
 import almundo.com.callcenter.builder.EmpleadoBuilder;
 import almundo.com.callcenter.enums.TipoEmpleadoEnum;
 import almundo.com.callcenter.model.Empleable;
 
 /**
- * Clase que implementa una estrategia de asignacion
- * de llamda a un empleado determinado (Op, Sup, Dir),
- * dependiendo la disponibilidad.
+ * Clase se encarga de buscar un empleado disponible.
  *
  */
-public class EmpStrategy implements Strategy {
+public class SearchAvailabilityEmp implements SearchAvailability {
 
-    public static EmpStrategy instance = new EmpStrategy();
-    public static EmpStrategy getInstance(){
+    public static SearchAvailabilityEmp instance = new SearchAvailabilityEmp();
+    public static SearchAvailabilityEmp getInstance(){
         return instance;
     }
 
     /**
      * Constructor Privado.
-     * Genera la cantidad de Operadores, Supervisores y Directores.
      *
      */
-    private EmpStrategy(){
-        //Se llama a un builder para construir los operadores, supervisores y directores
-        //la cantidad de los mismos se toma de forma arbitraria
-        EmpleadoBuilder.crearEmpleado(10, TipoEmpleadoEnum.OPERADOR);
-        EmpleadoBuilder.crearEmpleado(2, TipoEmpleadoEnum.SUPERVISOR );
-        EmpleadoBuilder.crearEmpleado(1, TipoEmpleadoEnum.DIRECTOR);
+    private SearchAvailabilityEmp(){
+
     }
 
     /**

@@ -96,15 +96,6 @@ public class TestCallCenterDraft {
         }
     }
 
-    @Test
-    public void random2(){
-        Random ran = new Random();
-        int dig3 = ran.nextInt(900)+100; //siempre 3 digitos
-        int dig5 = ran.nextInt(90000)+10000; //siempre 5 digitos
-        //9000000000L
-        long dig13 = ran.nextLong() +1000000000000L; //siempre 13 digitos
-        logger.info("Ramdon: {} ", dig13);
-    }
 
     private void crearLlamadas(int cantLlamadas){
         for(int i=0; i<cantLlamadas; i++) {
