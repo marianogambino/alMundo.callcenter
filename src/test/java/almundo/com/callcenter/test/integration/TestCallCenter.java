@@ -33,7 +33,6 @@ public class TestCallCenter {
     @Test
     public void testCallCenter(){
         CallCenter callcenter = CallCenter.newInstance();
-        QueueCall.getQueue().addAll(calls);
         callcenter.assignCalls();
     }
 
@@ -43,8 +42,7 @@ public class TestCallCenter {
     @Test
     public void testConMasDiezDeLlamadas(){
         CallCenter callcenter = CallCenter.newInstance();
-        //Se agregan diez llamadas a una queue.
-        QueueCall.getQueue().addAll(calls);
+
         //Se agregan dos llamadas nuevas
         QueueCall.getQueue().push(Call.newInstance( "New Call 11"));
         QueueCall.getQueue().push(Call.newInstance( "New Call 12"));
@@ -58,7 +56,7 @@ public class TestCallCenter {
      */
     private void crearLlamadas(int cantLlamadas){
         for(int i=0; i<cantLlamadas; i++) {
-            calls.add( Call.newInstance( "Call" + (i+1) ));
+            QueueCall.getQueue().push( Call.newInstance( "Call" + (i+1) ));
         }
     }
 }

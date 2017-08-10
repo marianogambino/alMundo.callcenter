@@ -22,7 +22,10 @@ public class Dispatcher {
      * Contructor. Instancia el Dispatcher.
      */
     private Dispatcher(){
-        this.searhEmp = SearchAvailabilityEmp.getInstance();
+
+        //this.searhEmp = SearchAvailabilityEmp.getInstance();
+
+        //create thread pool and add thread by priority.
     }
 
     /**
@@ -41,16 +44,23 @@ public class Dispatcher {
 
         //Se verifica la cantidad maxima de llamadas.
         if(CallCounter.count() < MAX_CALL) {
+
             //Obtengo el empleado asignandole la llamada, utilizando una estrategia de asignacion.
-            Empleable empleado = searhEmp.get();
-            //Si existe empleado que atienda la llamada.
-            if (empleado != null) {
-                //lanzo el hilo para tomar las llamadas de forma concurrente
-                empleado.setearLlamada(call);
-                CallCounter.add();
-                QueueCall.getQueue().remove(call);
-                throwThread(empleado);
-            }
+
+//            Empleable empleado = searhEmp.get();
+//            //Si existe empleado que atienda la llamada.
+//            if (empleado != null) {
+//                //lanzo el hilo para tomar las llamadas de forma concurrente
+//                empleado.setearLlamada(call);
+//                CallCounter.add();
+//                throwThread(empleado);
+//            }
+
+            //get thread of the thread pool according the priority
+            //then set call to thread empleable or employ
+            // and start thread.
+            //when the thread finished must it back to pool.
+
         }
     }
 
