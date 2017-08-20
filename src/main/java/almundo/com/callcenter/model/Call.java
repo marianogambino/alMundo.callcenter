@@ -1,40 +1,23 @@
 package almundo.com.callcenter.model;
 
+import java.util.Random;
+
 /**
  * Clase que representa una llamada telefonica.
  */
-public class Call {
+public class Call implements Runnable {
 
-    private String descipcion;
-    private String nroTelefono;
+    private final String descripcion;
+    private final String nroTelefono;
 
-    private Call(){}
+    private Random ran = new Random();
 
-    /**
-     * Contructor privato que instancia un objeto y setea un nro telefonico.
-     * @param nro de telefono.
-     */
-    private Call(String nro){
-        this.nroTelefono = nro;
+    public Call(String descripcion, String nroTelefono){
+        this.descripcion = descripcion;
+        this.nroTelefono = nroTelefono;
     }
 
 
-    /**
-     * Instancia un objeto Call.
-     * @return un objeto Call.
-     */
-    public static Call newInstance(){
-        return new Call();
-    }
-
-    /**
-     * Retorna una nueva instacia de Call con un nro de telefono.
-     * @param nro de telefono.
-     * @return un objeto Call.
-     */
-    public static Call newInstance(String nro){
-        return new Call(nro);
-    }
 
     /**
      * Obtiene el nro de telefono.
@@ -44,27 +27,28 @@ public class Call {
         return nroTelefono;
     }
 
-    /**
-     * Setea un nro de telefono.
-     * @param nroTelefono
-     */
-    public void setNroTelefono(String nroTelefono) {
-        this.nroTelefono = nroTelefono;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    /**
-     * Retorna una descripcion.
-     * @return una descripcion.
-     */
-    public String getDescipcion() {
-        return descipcion;
+
+
+    public void run() {
+        try {
+            int x = (ran.nextInt(6) + 5 ) * 1000;
+            Thread.sleep(x);
+            System.out.print("Call " + this.descripcion + " finished ");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    /**
-     * Setea una descripcion.
-     * @param descipcion
-     */
-    public void setDescipcion(String descipcion) {
-        this.descipcion = descipcion;
+    @Override
+    public String toString() {
+        return "Call{" +
+                "descripcion='" + descripcion + '\'' +
+                ", nroTelefono='" + nroTelefono + '\'' +
+                '}';
     }
 }

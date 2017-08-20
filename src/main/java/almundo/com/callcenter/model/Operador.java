@@ -1,9 +1,12 @@
 package almundo.com.callcenter.model;
 
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * Clase que Representa a un Operador.
  */
 public class Operador extends Empleado {
+
 
     /**
      * Retorna una instancia de Operador
@@ -13,27 +16,20 @@ public class Operador extends Empleado {
         return new Operador();
     }
 
-    /**
-     * Retorna una instancia de Operador
-     * @param nombre nombre del Operador.
-     * @return un Operador.
-     */
-    public static Empleable newInstance(String nombre){
-        return new Operador(nombre);
-    }
 
     /**
      * Constructo privado. Instancia un Operador.
      */
-    private Operador(){}
+    public Operador(){}
 
     /**
      * Constructo privado. Instancia un Operador asignandole un nombre.
      * @param nombre
      */
-    private Operador(String nombre){
-        this.nombre = "Operador";
+    public Operador(String nombre, LinkedBlockingQueue<Runnable> queue){
+        this.nombre = "Operador ";
         this.nombre = this.nombre + nombre;
+        this.queue = queue;
     }
 
 }

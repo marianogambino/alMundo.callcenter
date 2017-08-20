@@ -5,10 +5,6 @@ package almundo.com.callcenter.model;
  */
 public interface Empleable extends Runnable {
 
-    /**
-     * Setea una llamada telefonica.
-     * @param llamada telefonica.
-     */
-    void setearLlamada(Call llamada);
+
 }
 

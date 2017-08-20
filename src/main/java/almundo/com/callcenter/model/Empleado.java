@@ -1,30 +1,29 @@
 package almundo.com.callcenter.model;
 
-import almundo.com.callcenter.builder.EmpleadoBuilder;
-import almundo.com.callcenter.util.CallCounter;
-import almundo.com.callcenter.util.Util;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Random;
+import java.util.concurrent.LinkedBlockingQueue;
+
 
 /**
  * Clase Empleado.
  */
-public class Empleado implements Empleable {
+public class Empleado extends Thread implements Empleable {
 
     protected static Logger logger = LoggerFactory.getLogger(Empleado.class);
 
     protected String nombre;
+    protected LinkedBlockingQueue<Runnable> queue;
 
-    protected Call call;
 
     /**
      * Contructor.
      */
     public Empleado(){}
 
-    private Random ran = new Random();
+
 
     /**
      * Contructor.
@@ -39,20 +38,32 @@ public class Empleado implements Empleable {
      * Atiende la llamada telefonica.
      */
     public void run() {
-        try {
-            System.out.println("Soy " +  this.nombre + " - Tomo la Llamada " + this.call.getNroTelefono());
-            //Obtengo la cantidad de segundos, entre 5 y 10 de forma aleatoria.
-            int x = (ran.nextInt(6) + 5 ) * 1000;
-            //Simulo duracion de la llamada telefonica.
-            Thread.sleep(x);
-            //El empleado vuelve a la lista correspondiente para tener disponibilidad y
-            // atender otra llamada.
-            EmpleadoBuilder.getListaEmpleado(Util.getTipo(this)).add(this);
-            CallCounter.sustract();
+
+        Runnable call;
+        while(true){
+
+            synchronized (queue) {
+                while (queue.isEmpty()) {
+
+                    try {
+
+                        queue.wait();
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                try {
+                    call = queue.poll();
+                    System.out.println(" Thread: " + this.nombre + " - get call: " + call.toString());
+                    call.run();
+                } catch (RuntimeException re) {
+                    System.out.println("Thread pool is interrupted due to an issue: " + re.getMessage());
+                }
+            }
         }
-        catch(InterruptedException iex){
-            logger.info("La Llamada atendida por {}  fue interrumpida", this.nombre);
-        }
+
     }
 
     /**
@@ -71,11 +82,6 @@ public class Empleado implements Empleable {
         this.nombre = nombre;
     }
 
-    /**
-     * Seteo una llamada telefonica.
-     * @param llamada telefonica.
-     */
-    public void setearLlamada(Call llamada) {
-         this.call = llamada;
-    }
+
+
 }

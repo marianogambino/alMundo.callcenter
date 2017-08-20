@@ -1,13 +1,9 @@
 package almundo.com.callcenter.test.integration;
 
-import almundo.com.callcenter.callcenter.CallCenter;
+import almundo.com.callcenter.dispatcher.Dispatcher;
 import almundo.com.callcenter.model.Call;
-import almundo.com.callcenter.queue.QueueCall;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Test de Integracion
@@ -17,23 +13,29 @@ import java.util.List;
  */
 public class TestCallCenter {
 
-    private List<Call> calls = new ArrayList<Call>();
 
     /**
      *
      */
     @Before
     public void setUp(){
-        crearLlamadas(10);
+
     }
 
     /**
      *
      */
     @Test
-    public void testCallCenter(){
-        CallCenter callcenter = CallCenter.newInstance();
-        callcenter.assignCalls();
+    public void testCallCenter() throws InterruptedException {
+
+        Dispatcher dispatcher = new Dispatcher();
+        Thread.sleep(3000);
+
+        for(int i=0; i< 10; i++){
+            Call call = new Call("Call "+ i, "156666777"+i);
+            dispatcher.dispatchCall(call);
+        }
+
     }
 
     /**
@@ -41,22 +43,8 @@ public class TestCallCenter {
      */
     @Test
     public void testConMasDiezDeLlamadas(){
-        CallCenter callcenter = CallCenter.newInstance();
 
-        //Se agregan dos llamadas nuevas
-        QueueCall.getQueue().push(Call.newInstance( "New Call 11"));
-        QueueCall.getQueue().push(Call.newInstance( "New Call 12"));
-        QueueCall.getQueue().push(Call.newInstance( "New Call 13"));
-        callcenter.assignCalls();
     }
 
-    /**
-     *
-     * @param cantLlamadas
-     */
-    private void crearLlamadas(int cantLlamadas){
-        for(int i=0; i<cantLlamadas; i++) {
-            QueueCall.getQueue().push( Call.newInstance( "Call" + (i+1) ));
-        }
-    }
+
 }

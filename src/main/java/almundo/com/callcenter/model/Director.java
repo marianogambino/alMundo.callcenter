@@ -1,5 +1,7 @@
 package almundo.com.callcenter.model;
 
+import java.util.concurrent.LinkedBlockingQueue;
+
 /**
  * Clase que Representa a un Director.
  */
@@ -13,27 +15,20 @@ public class Director  extends Empleado  {
         return new Director();
     }
 
-    /**
-     * Retorna una instancia de Director
-     * @param nombre nombre del Director.
-     * @return un Director.
-     */
-    public static Empleable newInstance(String nombre){
-        return new Director(nombre);
-    }
 
     /**
      * Constructo privado. Instancia un Director.
      */
-    private Director(){}
+    public Director(){}
 
     /**
      * Constructo privado. Instancia un Director asignandole un nombre.
      * @param nombre
      */
-    private Director(String nombre){
-        this.nombre = "Director";
+    public Director(String nombre, LinkedBlockingQueue<Runnable> queue){
+        this.nombre = "Director ";
         this.nombre = this.nombre + nombre;
+        this.queue = queue;
     }
 
 }
