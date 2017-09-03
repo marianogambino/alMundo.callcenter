@@ -2,8 +2,13 @@ package almundo.com.callcenter.test.integration;
 
 import almundo.com.callcenter.dispatcher.Dispatcher;
 import almundo.com.callcenter.model.Call;
+import almundo.com.callcenter.model.Operador;
+import almundo.com.callcenter.model.PriorityTask;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.concurrent.LinkedBlockingQueue;
+
 
 /**
  * Test de Integracion
@@ -29,12 +34,15 @@ public class TestCallCenter {
     public void testCallCenter() throws InterruptedException {
 
         Dispatcher dispatcher = new Dispatcher();
-        Thread.sleep(3000);
+        Thread dispatch = new Thread(dispatcher);
+        dispatch.start();
 
-        for(int i=0; i< 10; i++){
-            Call call = new Call("Call "+ i, "156666777"+i);
+        for(int i=0; i< 20; i++){
+            Call call = new Call("Call "+ (i+1), "156666777"+ (i+1));
             dispatcher.dispatchCall(call);
         }
+
+        dispatch.join();
 
     }
 

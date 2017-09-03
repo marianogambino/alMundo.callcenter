@@ -1,34 +1,20 @@
 package almundo.com.callcenter.model;
 
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Clase que Representa a un Director.
  */
-public class Director  extends Empleado  {
+public class Director  extends Employee {
 
-    /**
-     * Retorna una instancia de Director
-     * @return instancia de Director.
-     */
-    public static Empleable newInstance(){
-        return new Director();
-    }
-
-
-    /**
-     * Constructo privado. Instancia un Director.
-     */
-    public Director(){}
 
     /**
      * Constructo privado. Instancia un Director asignandole un nombre.
      * @param nombre
      */
-    public Director(String nombre, LinkedBlockingQueue<Runnable> queue){
-        this.nombre = "Director ";
-        this.nombre = this.nombre + nombre;
-        this.queue = queue;
+    public Director(String nombre, BlockingQueue<Employee> employeeBlockingQueue, AtomicInteger countCall){
+        super("Director " + nombre, PriorityTask.DIRECTOR, employeeBlockingQueue, countCall);
     }
 
 }
